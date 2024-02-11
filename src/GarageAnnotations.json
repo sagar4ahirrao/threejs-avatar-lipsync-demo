@@ -1,0 +1,72 @@
+[
+    {
+      "title": "Head Lamp",
+      "description": "<p>Smart LED Low High Beam Lamp</p>",
+      "camPos": {
+        "x": 3.311,
+        "y": 0.773,
+        "z": -1.340
+      },
+      "lookAt": {
+        "x": 3.311,
+        "y": 0.773,
+        "z": -1.340
+      }
+    },
+    {
+      "title": "Grab Handle",
+      "description": "<p>Smart Door handle/p>",
+      "camPos": {
+        "x": 1.632,
+        "y": 0.945,
+        "z": -1.133
+      },
+      "lookAt": {
+        "x": 1.632,
+        "y": 0.945,
+        "z": -1.133
+      }
+    },
+    {
+      "title": "Engine",
+      "description": "High Performance Engine",
+      "camPos": {
+        "x": 3.386,
+        "y": 0.834,
+        "z": -2.159
+      },
+      "lookAt": {
+        "x": 3.386,
+        "y": 0.834,
+        "z": -2.159
+      }
+    },
+    {
+      "title": "Alloy Wheel",
+      "description": "<p>Diamond Cut Alloy Wheel</p>",
+      "camPos": {
+        "x": 0.080,
+        "y": 0.474,
+        "z": -2.810
+      },
+      "lookAt": {
+        "x": 0.080,
+        "y": 0.474,
+        "z": -2.810
+      }
+    },
+    {
+      "title": "Boot Space",
+      "description": "<p>spacious boot space</p>",
+      "camPos": {
+        "x": -0.495,
+        "y": 1.157,
+        "z": -1.920
+      },
+      "lookAt": {
+        "x": -0.495,
+        "y": 1.157,
+        "z": -1.920
+      }
+    }
+  ]
