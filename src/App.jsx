@@ -1,5 +1,5 @@
 import { Suspense, useState, useRef } from 'react'
-import { FirstPersonControls, Stats, Environment, PointerLockControls, Html, useProgress, CameraControls } from '@react-three/drei'
+import { Stats, Environment, Html, useProgress, CameraControls } from '@react-three/drei'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import Game from './Game'
 import Overlay from './Overlay'
@@ -35,14 +35,14 @@ function Annotations({ controls }) {
                 }}
               />
               <text x="12" y="22" fill="white" fontSize={17} fontFamily="monospace" style={{ pointerEvents: 'none' }}>
-                {i+1}
+                {i + 1}
               </text>
             </svg>
             {a.description && i === selected && (
               <div
                 id={'desc_' + i}
                 className="annotationDescription"
-                dangerouslySetInnerHTML={{ __html: '<b>' +a.title+'<b/>' + '<br/>'+ a.description}}
+                dangerouslySetInnerHTML={{ __html: '<b>' + a.title + '<b/>' + '<br/>' + a.description }}
               />
             )}
           </Html>
@@ -63,28 +63,21 @@ export default function App() {
       <Canvas shadows camera={{ fov: 60 }}>
         <Suspense fallback={<Loader />}>
           <directionalLight
-            color={'0xffffff'}
             intensity={1}
             castShadow={true}
-            shadow-bias={-0.00006}
-            shadow-radius={4}
-            shadow-mapSize={[1024, 1024]}
-            position={[-5, 25, -1]}
+            shadow-bias={-0.0002}
+            shadow-mapSize={[2048, 2048]}
+            position={[0.382, 4, -2.8]}
             shadow-camera-left={-30}
             shadow-camera-right={30}
             shadow-camera-top={30}
             shadow-camera-bottom={-30}
-            shadow-camera-near={0.01}
-            shadow-camera-far={500}
           />
-          <hemisphereLight groundColor={'0x00668d'} intensity={0.7} position={[2, 1, 1]}
-          ></hemisphereLight>
-          <Environment preset="city" background blur={0.5} />
+          <Environment preset='warehouse' />
           <Game />
           <Avatar position={[3, 0, 0.5]} rotation={[0, -90, 0]}></Avatar>
           <Annotations />
-          {/* <Tween /> */}
-          <CameraControls ></CameraControls>
+          <CameraControls></CameraControls>
         </Suspense>
         <Stats />
       </Canvas>

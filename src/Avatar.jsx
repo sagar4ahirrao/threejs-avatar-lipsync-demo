@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Html, useAnimations, useFBX, useGLTF } from "@react-three/drei";
 import { useControls } from "leva";
+import useOctree from './useOctree'
 import { useFrame, useLoader } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -70,24 +71,24 @@ export default function Avatar(props) {
 
     useEffect(() => {
         if (audioRef.current) {
-            audioRef.current.pause(); 
+            audioRef.current.pause();
             audioRef.current.currentTime = 0;
         }
 
         if (playAudio) {
-            audioRef.current = audio; 
+            audioRef.current = audio;
             audio.play();
         }
     }, [playAudio, script]);
 
-    const { nodes, materials } = useGLTF("/models/Avatar.glb");
+    const { nodes, materials,scene} = useGLTF("/models/Avatar.glb");
     const { animations: idleAnimation } = useFBX("/animations/Idle.fbx");
     const { animations: talkingAnimation } = useFBX("/animations/Talking.fbx");
     const { animations: greetingAnimation } = useFBX("/animations/Greeting2.fbx");
     idleAnimation[0].name = "Idle";
     talkingAnimation[0].name = "Talking";
     greetingAnimation[0].name = "Greeting";
-
+    useOctree(scene);
     useEffect(() => {
         if (playAudio) {
             if (script === "Greetings") {
@@ -109,7 +110,7 @@ export default function Avatar(props) {
         group
     );
     useEffect(() => {
-        if (animation != "Idle" ) {
+        if (animation != "Idle") {
             console.log(animation);
             actions[animation].reset().fadeIn(0.5).play();
             actions[animation].loop = THREE.LoopOnce;
@@ -120,7 +121,7 @@ export default function Avatar(props) {
             actions[animation].loop = THREE.LoopRepeat;
         }
 
-        return () => actions[animation].fadeOut(1);
+        return () => actions[animation]?.fadeOut(1);
     }, [animation, actions]);
 
     return (
@@ -149,6 +150,8 @@ export default function Avatar(props) {
                 skeleton={nodes.Wolf3D_Head.skeleton}
                 morphTargetDictionary={nodes.Wolf3D_Head.morphTargetDictionary}
                 morphTargetInfluences={nodes.Wolf3D_Head.morphTargetInfluences}
+                castShadow
+                receiveShadow
             />
             <skinnedMesh
                 name="Wolf3D_Teeth"
@@ -167,11 +170,15 @@ export default function Avatar(props) {
                 geometry={nodes.Wolf3D_Body.geometry}
                 material={materials.Wolf3D_Body}
                 skeleton={nodes.Wolf3D_Body.skeleton}
+                castShadow
+                receiveShadow
             />
             <skinnedMesh
                 geometry={nodes.Wolf3D_Outfit_Bottom.geometry}
                 material={materials.Wolf3D_Outfit_Bottom}
                 skeleton={nodes.Wolf3D_Outfit_Bottom.skeleton}
+                castShadow
+                receiveShadow
             />
             <skinnedMesh
                 geometry={nodes.Wolf3D_Outfit_Footwear.geometry}
@@ -182,6 +189,8 @@ export default function Avatar(props) {
                 geometry={nodes.Wolf3D_Outfit_Top.geometry}
                 material={materials.Wolf3D_Outfit_Top}
                 skeleton={nodes.Wolf3D_Outfit_Top.skeleton}
+                castShadow
+                receiveShadow
             />
         </group>
     );
