@@ -1,18 +1,28 @@
-import { useGLTF, useAnimations } from '@react-three/drei'
-import useOctree from './useOctree'
-import Player from './Player'
-import useOctreeHelper from './useOctreeHelper'
-import { useRef } from 'react'
+import { useGLTF, useAnimations } from '@react-three/drei';
+import useOctree from './useOctree';
+import Player from './Player';
+import useOctreeHelper from './useOctreeHelper';
+import { useEffect, useRef } from 'react';
+import { useFrame } from '@react-three/fiber';
+import { useControls } from "leva";
 
 export default function Physics(props) {
   const group = useRef();
   const { nodes, scene, materials, animations } = useGLTF('/models/garage2.glb')
   const { actions } = useAnimations(animations, group);
-  const octree = useOctree(scene)
-  useOctreeHelper(octree)
-
+  const octree = useOctree(scene);
+  useOctreeHelper(octree);
+  materials.Material__108.roughness = 0.6;
+  materials.Material__108.metalness = 0.7;
+  materials.solar_body.metalness = 0.5;
+  materials.solar_body.roughness = 0.6;
+  materials.Material__27.metalness = 0.5;
+  materials.Material__27.roughness = 0.6;
   const colliders = useRef([])
-
+  const { color } = useControls({ color: '#ff9621' });
+  useFrame(() => {
+    materials.solar_body.color.set(color);
+  });
   return (
     <>
 
@@ -51,1060 +61,1060 @@ export default function Physics(props) {
                         />
                       </group>
 
-                      
-                        <group name="Wall">
-                          <group name="wall" position={[1743, 508, -228.4]}>
-                            <mesh
-                              name="wall_Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall_Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall_white_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall_white_0.geometry}
-                              material={materials.white}
-                            />
-                            <mesh
-                              name="wall_Material__25_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall_Material__25_0.geometry}
-                              material={materials.Material__25}
-                            />
-                            <mesh
-                              name="wall_glass_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall_glass_0.geometry}
-                              material={materials.glass}
-                            />
-                          </group>
-                          <group name="wall__1_" position={[1243, 508, -228.4]}>
-                            <mesh
-                              name="wall__1__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__1__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall__1__white_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__1__white_0.geometry}
-                              material={materials.white}
-                            />
-                            <mesh
-                              name="wall__1__Material__25_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__1__Material__25_0.geometry}
-                              material={materials.Material__25}
-                            />
-                            <mesh
-                              name="wall__1__glass_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__1__glass_0.geometry}
-                              material={materials.glass}
-                            />
-                          </group>
-                          <group name="wall__2_" position={[743, 508, -228.4]}>
-                            <mesh
-                              name="wall__2__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__2__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall__2__white_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__2__white_0.geometry}
-                              material={materials.white}
-                            />
-                            <mesh
-                              name="wall__2__Material__25_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__2__Material__25_0.geometry}
-                              material={materials.Material__25}
-                            />
-                            <mesh
-                              name="wall__2__glass_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__2__glass_0.geometry}
-                              material={materials.glass}
-                            />
-                          </group>
-                          <group name="wall__3_" position={[243, 508, -228.4]}>
-                            <mesh
-                              name="wall__3__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__3__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall__3__white_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__3__white_0.geometry}
-                              material={materials.white}
-                            />
-                            <mesh
-                              name="wall__3__Material__25_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__3__Material__25_0.geometry}
-                              material={materials.Material__25}
-                            />
-                            <mesh
-                              name="wall__3__glass_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__3__glass_0.geometry}
-                              material={materials.glass}
-                            />
-                          </group>
-                          <group name="wall__4_" position={[-257, 508, -228.4]}>
-                            <mesh
-                              name="wall__4__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__4__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall__4__white_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__4__white_0.geometry}
-                              material={materials.white}
-                            />
-                            <mesh
-                              name="wall__4__Material__25_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__4__Material__25_0.geometry}
-                              material={materials.Material__25}
-                            />
-                            <mesh
-                              name="wall__4__glass_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__4__glass_0.geometry}
-                              material={materials.glass}
-                            />
-                          </group>
-                          <group
-                            name="wall001"
-                            position={[2029, 342, 13]}
-                            rotation={[0, -Math.PI / 2, 0]}
-                          >
-                            <mesh
-                              name="wall001_Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001_Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall001_Material__25_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001_Material__25_0.geometry}
-                              material={materials.Material__25}
-                            />
-                          </group>
-                          <group
-                            name="wall001__1_"
-                            position={[2029, 342, 463]}
-                            rotation={[0, -Math.PI / 2, 0]}
-                          >
-                            <mesh
-                              name="wall001__1__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__1__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall001__1__Material__25_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__1__Material__25_0.geometry}
-                              material={materials.Material__25}
-                            />
-                          </group>
-                          <group
-                            name="wall__13_"
-                            position={[669.999, 508, 1350]}
-                            rotation={[0, -1.571, 0]}
-                          >
-                            <mesh
-                              name="wall__13__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__13__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall__13__white_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__13__white_0.geometry}
-                              material={materials.white}
-                            />
-                            <mesh
-                              name="wall__13__Material__25_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__13__Material__25_0.geometry}
-                              material={materials.Material__25}
-                            />
-                            <mesh
-                              name="wall__13__glass_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__13__glass_0.geometry}
-                              material={materials.glass}
-                            />
-                          </group>
-                          <group
-                            name="wall001__2_"
-                            position={[2029, 342, 913]}
-                            rotation={[0, -Math.PI / 2, 0]}
-                          >
-                            <mesh
-                              name="wall001__2__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__2__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall001__2__Material__25_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__2__Material__25_0.geometry}
-                              material={materials.Material__25}
-                            />
-                          </group>
-                          <group
-                            name="wall__6_"
-                            position={[-227.597, 508, -143]}
-                            rotation={[0, 1.571, 0]}
-                          >
-                            <mesh
-                              name="wall__6__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__6__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall__6__white_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__6__white_0.geometry}
-                              material={materials.white}
-                            />
-                            <mesh
-                              name="wall__6__Material__25_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__6__Material__25_0.geometry}
-                              material={materials.Material__25}
-                            />
-                            <mesh
-                              name="wall__6__glass_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__6__glass_0.geometry}
-                              material={materials.glass}
-                            />
-                          </group>
-                          <group
-                            name="wall__7_"
-                            position={[-227.598, 508, 357]}
-                            rotation={[0, 1.571, 0]}
-                          >
-                            <mesh
-                              name="wall__7__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__7__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall__7__white_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__7__white_0.geometry}
-                              material={materials.white}
-                            />
-                            <mesh
-                              name="wall__7__Material__25_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__7__Material__25_0.geometry}
-                              material={materials.Material__25}
-                            />
-                            <mesh
-                              name="wall__7__glass_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__7__glass_0.geometry}
-                              material={materials.glass}
-                            />
-                          </group>
-                          <group
-                            name="wall__8_"
-                            position={[-227.599, 508, 857]}
-                            rotation={[0, 1.571, 0]}
-                          >
-                            <mesh
-                              name="wall__8__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__8__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall__8__white_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__8__white_0.geometry}
-                              material={materials.white}
-                            />
-                            <mesh
-                              name="wall__8__Material__25_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__8__Material__25_0.geometry}
-                              material={materials.Material__25}
-                            />
-                            <mesh
-                              name="wall__8__glass_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__8__glass_0.geometry}
-                              material={materials.glass}
-                            />
-                          </group>
-                          <group
-                            name="wall__9_"
-                            position={[-227.6, 508, 1357]}
-                            rotation={[0, 1.571, 0]}
-                          >
-                            <mesh
-                              name="wall__9__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__9__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall__9__white_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__9__white_0.geometry}
-                              material={materials.white}
-                            />
-                            <mesh
-                              name="wall__9__Material__25_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__9__Material__25_0.geometry}
-                              material={materials.Material__25}
-                            />
-                            <mesh
-                              name="wall__9__glass_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__9__glass_0.geometry}
-                              material={materials.glass}
-                            />
-                          </group>
-                          <group
-                            name="wall__10_"
-                            position={[-227.6, 508, 1872]}
-                            rotation={[0, 1.571, 0]}
-                          >
-                            <mesh
-                              name="wall__10__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__10__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall__10__white_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__10__white_0.geometry}
-                              material={materials.white}
-                            />
-                            <mesh
-                              name="wall__10__Material__25_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__10__Material__25_0.geometry}
-                              material={materials.Material__25}
-                            />
-                            <mesh
-                              name="wall__10__glass_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__10__glass_0.geometry}
-                              material={materials.glass}
-                            />
-                          </group>
-                          <group
-                            name="wall001__3_"
-                            position={[1795, 342, 1123]}
-                            rotation={[Math.PI, 0, Math.PI]}
-                          >
-                            <mesh
-                              name="wall001__3__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__3__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall001__3__Material__25_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__3__Material__25_0.geometry}
-                              material={materials.Material__25}
-                            />
-                          </group>
-                          <group
-                            name="wall001__4_"
-                            position={[1345.006, 342, 1125.329]}
-                            rotation={[Math.PI, 0, Math.PI]}
-                          >
-                            <mesh
-                              name="wall001__4__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__4__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall001__4__Material__25_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__4__Material__25_0.geometry}
-                              material={materials.Material__25}
-                            />
-                          </group>
-                          <group
-                            name="wall001__5_"
-                            position={[895.012, 342, 1127.658]}
-                            rotation={[Math.PI, 0, Math.PI]}
-                          >
-                            <mesh
-                              name="wall001__5__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__5__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall001__5__Material__25_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__5__Material__25_0.geometry}
-                              material={materials.Material__25}
-                            />
-                          </group>
-                          <group
-                            name="wall001__6_"
-                            position={[439.988, 342, 2244.67]}
-                            rotation={[Math.PI, 0, Math.PI]}
-                          >
-                            <mesh
-                              name="wall001__6__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__6__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall001__6__Material__25_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__6__Material__25_0.geometry}
-                              material={materials.Material__25}
-                            />
-                          </group>
-                          <group
-                            name="wall001__7_"
-                            position={[-15, 342, 2247]}
-                            rotation={[Math.PI, 0, Math.PI]}
-                          >
-                            <mesh
-                              name="wall001__7__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__7__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall001__7__Material__25_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__7__Material__25_0.geometry}
-                              material={materials.Material__25}
-                            />
-                          </group>
-                          <group
-                            name="wall__11_"
-                            position={[670, 508, 2371]}
-                            rotation={[0, -1.571, 0]}
-                          >
-                            <mesh
-                              name="wall__11__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__11__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall__11__white_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__11__white_0.geometry}
-                              material={materials.white}
-                            />
-                            <mesh
-                              name="wall__11__Material__25_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__11__Material__25_0.geometry}
-                              material={materials.Material__25}
-                            />
-                            <mesh
-                              name="wall__11__glass_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__11__glass_0.geometry}
-                              material={materials.glass}
-                            />
-                          </group>
-                          <group
-                            name="wall__12_"
-                            position={[670, 508, 1871]}
-                            rotation={[0, -1.571, 0]}
-                          >
-                            <mesh
-                              name="wall__12__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__12__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall__12__white_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__12__white_0.geometry}
-                              material={materials.white}
-                            />
-                            <mesh
-                              name="wall__12__Material__25_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__12__Material__25_0.geometry}
-                              material={materials.Material__25}
-                            />
-                            <mesh
-                              name="wall__12__glass_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__12__glass_0.geometry}
-                              material={materials.glass}
-                            />
-                          </group>
-                          <group
-                            name="wall001__8_"
-                            position={[2029, 1017, 13]}
-                            rotation={[0, -Math.PI / 2, 0]}
-                          >
-                            <mesh
-                              name="wall001__8__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__8__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall001__8__shade_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__8__shade_0.geometry}
-                              material={materials.shade}
-                            />
-                          </group>
-                          <group
-                            name="wall001__9_"
-                            position={[2029, 1017, 463]}
-                            rotation={[0, -Math.PI / 2, 0]}
-                          >
-                            <mesh
-                              name="wall001__9__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__9__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall001__9__shade_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__9__shade_0.geometry}
-                              material={materials.shade}
-                            />
-                          </group>
-                          <group
-                            name="wall001__10_"
-                            position={[2029, 1017, 913]}
-                            rotation={[0, -Math.PI / 2, 0]}
-                          >
-                            <mesh
-                              name="wall001__10__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__10__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall001__10__shade_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__10__shade_0.geometry}
-                              material={materials.shade}
-                            />
-                          </group>
-                          <group
-                            name="wall001__11_"
-                            position={[1795, 1017, 1123]}
-                            rotation={[Math.PI, 0, Math.PI]}
-                          >
-                            <mesh
-                              name="wall001__11__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__11__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall001__11__shade_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__11__shade_0.geometry}
-                              material={materials.shade}
-                            />
-                          </group>
-                          <group
-                            name="wall001__12_"
-                            position={[1345.006, 1017, 1125.33]}
-                            rotation={[Math.PI, 0, Math.PI]}
-                          >
-                            <mesh
-                              name="wall001__12__Material__26_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__12__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall001__12__shade_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__12__shade_0.geometry}
-                              material={materials.shade}
-                            />
-                          </group>
-                          <group
-                            name="roof"
-                            position={[895.012, 1017, 1127.659]}
-                            rotation={[Math.PI, 0, Math.PI]}
-                          >
-                            <mesh
-                              name="roof_Material__26_0"
-                              // //castShadow
-                              receiveShadow
-                              geometry={nodes.roof_Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="roof_shade_0"
-                              ////castShadow
-                              receiveShadow
-                              geometry={nodes.roof_shade_0.geometry}
-                              material={materials.shade}
-                            />
-                          </group>
-                          <group
-                            name="wall001__14_"
-                            position={[439.988, 1017, 2239]}
-                            rotation={[Math.PI, 0, Math.PI]}
-                          >
-                            <mesh
-                              name="wall001__14__Material__26_0"
-                              ////castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__14__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall001__14__shade_0"
-                              ////castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__14__shade_0.geometry}
-                              material={materials.shade}
-                            />
-                          </group>
-                          <group
-                            name="wall001__15_"
-                            position={[-10.006, 1017, 2241.329]}
-                            rotation={[Math.PI, 0, Math.PI]}
-                          >
-                            <mesh
-                              name="wall001__15__Material__26_0"
-                              ////castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__15__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall001__15__shade_0"
-                              ////castShadow
-                              receiveShadow
-                              geometry={nodes.wall001__15__shade_0.geometry}
-                              material={materials.shade}
-                            />
-                          </group>
-                          <group
-                            name="wall__14_"
-                            position={[-227.6, 508, 2374.502]}
-                            rotation={[0, 1.571, 0]}
-                          >
-                            <mesh
-                              name="wall__14__Material__26_0"
-                              ////castShadow
-                              receiveShadow
-                              geometry={nodes.wall__14__Material__26_0.geometry}
-                              material={materials.Material__26}
-                            />
-                            <mesh
-                              name="wall__14__white_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__14__white_0.geometry}
-                              material={materials.white}
-                            />
-                            <mesh
-                              name="wall__14__Material__25_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__14__Material__25_0.geometry}
-                              material={materials.Material__25}
-                            />
-                            <mesh
-                              name="wall__14__glass_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.wall__14__glass_0.geometry}
-                              material={materials.glass}
-                            />
-                          </group>
-                        </group>
-                      
 
-                      
-                        <group name="Floor">
-                          <group name="floor" rotation={[-Math.PI / 2, 0, 0]}>
-                            <mesh
-                              name="floor_Material__108_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.floor_Material__108_0.geometry}
-                              material={materials.Material__108}
-                            />
-                          </group>
-                          <group
-                            name="floor__1_"
-                            position={[450, 0, 0]}
-                            rotation={[-Math.PI / 2, 0, 0]}
-                          >
-                            <mesh
-                              name="floor__1__Material__108_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.floor__1__Material__108_0.geometry}
-                              material={materials.Material__108}
-                            />
-                          </group>
-                          <group
-                            name="floor__2_"
-                            position={[900, 0, 0]}
-                            rotation={[-Math.PI / 2, 0, 0]}
-                          >
-                            <mesh
-                              name="floor__2__Material__108_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.floor__2__Material__108_0.geometry}
-                              material={materials.Material__108}
-                            />
-                          </group>
-                          <group
-                            name="floor__3_"
-                            position={[1350, 0, 0]}
-                            rotation={[-Math.PI / 2, 0, 0]}
-                          >
-                            <mesh
-                              name="floor__3__Material__108_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.floor__3__Material__108_0.geometry}
-                              material={materials.Material__108}
-                            />
-                          </group>
-                          <group
-                            name="floor__4_"
-                            position={[1800, 0, 0]}
-                            rotation={[-Math.PI / 2, 0, 0]}
-                          >
-                            <mesh
-                              name="floor__4__Material__108_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.floor__4__Material__108_0.geometry}
-                              material={materials.Material__108}
-                            />
-                          </group>
-                          <group
-                            name="floor__5_"
-                            position={[0, 0, 450]}
-                            rotation={[-Math.PI / 2, 0, 0]}
-                          >
-                            <mesh
-                              name="floor__5__Material__108_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.floor__5__Material__108_0.geometry}
-                              material={materials.Material__108}
-                            />
-                          </group>
-                          <group
-                            name="floor__6_"
-                            position={[450, 0, 450]}
-                            rotation={[-Math.PI / 2, 0, 0]}
-                          >
-                            <mesh
-                              name="floor__6__Material__108_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.floor__6__Material__108_0.geometry}
-                              material={materials.Material__108}
-                            />
-                          </group>
-                          <group
-                            name="floor__7_"
-                            position={[900, 0, 450]}
-                            rotation={[-Math.PI / 2, 0, 0]}
-                          >
-                            <mesh
-                              name="floor__7__Material__108_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.floor__7__Material__108_0.geometry}
-                              material={materials.Material__108}
-                            />
-                          </group>
-                          <group
-                            name="floor__8_"
-                            position={[1350, 0, 450]}
-                            rotation={[-Math.PI / 2, 0, 0]}
-                          >
-                            <mesh
-                              name="floor__8__Material__108_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.floor__8__Material__108_0.geometry}
-                              material={materials.Material__108}
-                            />
-                          </group>
-                          <group
-                            name="floor__9_"
-                            position={[1800, 0, 450]}
-                            rotation={[-Math.PI / 2, 0, 0]}
-                          >
-                            <mesh
-                              name="floor__9__Material__108_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.floor__9__Material__108_0.geometry}
-                              material={materials.Material__108}
-                            />
-                          </group>
-                          <group
-                            name="floor__10_"
-                            position={[0, 0, 900]}
-                            rotation={[-Math.PI / 2, 0, 0]}
-                          >
-                            <mesh
-                              name="floor__10__Material__108_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.floor__10__Material__108_0.geometry}
-                              material={materials.Material__108}
-                            />
-                          </group>
-                          <group
-                            name="floor__11_"
-                            position={[450, 0, 900]}
-                            rotation={[-Math.PI / 2, 0, 0]}
-                          >
-                            <mesh
-                              name="floor__11__Material__108_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.floor__11__Material__108_0.geometry}
-                              material={materials.Material__108}
-                            />
-                          </group>
-                          <group
-                            name="floor__12_"
-                            position={[900, 0, 900]}
-                            rotation={[-Math.PI / 2, 0, 0]}
-                          >
-                            <mesh
-                              name="floor__12__Material__108_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.floor__12__Material__108_0.geometry}
-                              material={materials.Material__108}
-                            />
-                          </group>
-                          <group
-                            name="floor__13_"
-                            position={[1350, 0, 900]}
-                            rotation={[-Math.PI / 2, 0, 0]}
-                          >
-                            <mesh
-                              name="floor__13__Material__108_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.floor__13__Material__108_0.geometry}
-                              material={materials.Material__108}
-                            />
-                          </group>
-                          <group
-                            name="floor__14_"
-                            position={[1800, 0, 900]}
-                            rotation={[-Math.PI / 2, 0, 0]}
-                          >
-                            <mesh
-                              name="floor__14__Material__108_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.floor__14__Material__108_0.geometry}
-                              material={materials.Material__108}
-                            />
-                          </group>
-                          <group
-                            name="floor__15_"
-                            position={[0, 0, 1350]}
-                            rotation={[-Math.PI / 2, 0, 0]}
-                          >
-                            <mesh
-                              name="floor__15__Material__108_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.floor__15__Material__108_0.geometry}
-                              material={materials.Material__108}
-                            />
-                          </group>
-                          <group
-                            name="floor__16_"
-                            position={[450, 0, 1350]}
-                            rotation={[-Math.PI / 2, 0, 0]}
-                          >
-                            <mesh
-                              name="floor__16__Material__108_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.floor__16__Material__108_0.geometry}
-                              material={materials.Material__108}
-                            />
-                          </group>
-                          <group
-                            name="floor__21_"
-                            position={[0, 0, 1800]}
-                            rotation={[-Math.PI / 2, 0, 0]}
-                          >
-                            <mesh
-                              name="floor__21__Material__108_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.floor__21__Material__108_0.geometry}
-                              material={materials.Material__108}
-                            />
-                          </group>
-                          <group
-                            name="floor__22_"
-                            position={[450, 0, 1800]}
-                            rotation={[-Math.PI / 2, 0, 0]}
-                          >
-                            <mesh
-                              name="floor__22__Material__108_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.floor__22__Material__108_0.geometry}
-                              material={materials.Material__108}
-                            />
-                          </group>
-                          <group
-                            name="floor__23_"
-                            position={[0, 0, 2255.7]}
-                            rotation={[-Math.PI / 2, 0, 0]}
-                          >
-                            <mesh
-                              name="floor__23__Material__108_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.floor__23__Material__108_0.geometry}
-                              material={materials.Material__108}
-                            />
-                          </group>
-                          <group
-                            name="floor__24_"
-                            position={[450, 0, 2255.7]}
-                            rotation={[-Math.PI / 2, 0, 0]}
-                          >
-                            <mesh
-                              name="floor__24__Material__108_0"
-                              //castShadow
-                              receiveShadow
-                              geometry={nodes.floor__24__Material__108_0.geometry}
-                              material={materials.Material__108}
-                            />
-                          </group>
+                      <group name="Wall">
+                        <group name="wall" position={[1743, 508, -228.4]}>
+                          <mesh
+                            name="wall_Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall_Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall_white_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall_white_0.geometry}
+                            material={materials.white}
+                          />
+                          <mesh
+                            name="wall_Material__25_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall_Material__25_0.geometry}
+                            material={materials.Material__25}
+                          />
+                          <mesh
+                            name="wall_glass_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall_glass_0.geometry}
+                            material={materials.glass}
+                          />
                         </group>
-                      
+                        <group name="wall__1_" position={[1243, 508, -228.4]}>
+                          <mesh
+                            name="wall__1__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__1__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall__1__white_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__1__white_0.geometry}
+                            material={materials.white}
+                          />
+                          <mesh
+                            name="wall__1__Material__25_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__1__Material__25_0.geometry}
+                            material={materials.Material__25}
+                          />
+                          <mesh
+                            name="wall__1__glass_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__1__glass_0.geometry}
+                            material={materials.glass}
+                          />
+                        </group>
+                        <group name="wall__2_" position={[743, 508, -228.4]}>
+                          <mesh
+                            name="wall__2__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__2__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall__2__white_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__2__white_0.geometry}
+                            material={materials.white}
+                          />
+                          <mesh
+                            name="wall__2__Material__25_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__2__Material__25_0.geometry}
+                            material={materials.Material__25}
+                          />
+                          <mesh
+                            name="wall__2__glass_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__2__glass_0.geometry}
+                            material={materials.glass}
+                          />
+                        </group>
+                        <group name="wall__3_" position={[243, 508, -228.4]}>
+                          <mesh
+                            name="wall__3__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__3__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall__3__white_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__3__white_0.geometry}
+                            material={materials.white}
+                          />
+                          <mesh
+                            name="wall__3__Material__25_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__3__Material__25_0.geometry}
+                            material={materials.Material__25}
+                          />
+                          <mesh
+                            name="wall__3__glass_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__3__glass_0.geometry}
+                            material={materials.glass}
+                          />
+                        </group>
+                        <group name="wall__4_" position={[-257, 508, -228.4]}>
+                          <mesh
+                            name="wall__4__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__4__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall__4__white_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__4__white_0.geometry}
+                            material={materials.white}
+                          />
+                          <mesh
+                            name="wall__4__Material__25_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__4__Material__25_0.geometry}
+                            material={materials.Material__25}
+                          />
+                          <mesh
+                            name="wall__4__glass_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__4__glass_0.geometry}
+                            material={materials.glass}
+                          />
+                        </group>
+                        <group
+                          name="wall001"
+                          position={[2029, 342, 13]}
+                          rotation={[0, -Math.PI / 2, 0]}
+                        >
+                          <mesh
+                            name="wall001_Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001_Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall001_Material__25_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001_Material__25_0.geometry}
+                            material={materials.Material__25}
+                          />
+                        </group>
+                        <group
+                          name="wall001__1_"
+                          position={[2029, 342, 463]}
+                          rotation={[0, -Math.PI / 2, 0]}
+                        >
+                          <mesh
+                            name="wall001__1__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__1__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall001__1__Material__25_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__1__Material__25_0.geometry}
+                            material={materials.Material__25}
+                          />
+                        </group>
+                        <group
+                          name="wall__13_"
+                          position={[669.999, 508, 1350]}
+                          rotation={[0, -1.571, 0]}
+                        >
+                          <mesh
+                            name="wall__13__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__13__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall__13__white_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__13__white_0.geometry}
+                            material={materials.white}
+                          />
+                          <mesh
+                            name="wall__13__Material__25_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__13__Material__25_0.geometry}
+                            material={materials.Material__25}
+                          />
+                          <mesh
+                            name="wall__13__glass_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__13__glass_0.geometry}
+                            material={materials.glass}
+                          />
+                        </group>
+                        <group
+                          name="wall001__2_"
+                          position={[2029, 342, 913]}
+                          rotation={[0, -Math.PI / 2, 0]}
+                        >
+                          <mesh
+                            name="wall001__2__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__2__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall001__2__Material__25_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__2__Material__25_0.geometry}
+                            material={materials.Material__25}
+                          />
+                        </group>
+                        <group
+                          name="wall__6_"
+                          position={[-227.597, 508, -143]}
+                          rotation={[0, 1.571, 0]}
+                        >
+                          <mesh
+                            name="wall__6__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__6__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall__6__white_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__6__white_0.geometry}
+                            material={materials.white}
+                          />
+                          <mesh
+                            name="wall__6__Material__25_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__6__Material__25_0.geometry}
+                            material={materials.Material__25}
+                          />
+                          <mesh
+                            name="wall__6__glass_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__6__glass_0.geometry}
+                            material={materials.glass}
+                          />
+                        </group>
+                        <group
+                          name="wall__7_"
+                          position={[-227.598, 508, 357]}
+                          rotation={[0, 1.571, 0]}
+                        >
+                          <mesh
+                            name="wall__7__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__7__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall__7__white_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__7__white_0.geometry}
+                            material={materials.white}
+                          />
+                          <mesh
+                            name="wall__7__Material__25_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__7__Material__25_0.geometry}
+                            material={materials.Material__25}
+                          />
+                          <mesh
+                            name="wall__7__glass_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__7__glass_0.geometry}
+                            material={materials.glass}
+                          />
+                        </group>
+                        <group
+                          name="wall__8_"
+                          position={[-227.599, 508, 857]}
+                          rotation={[0, 1.571, 0]}
+                        >
+                          <mesh
+                            name="wall__8__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__8__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall__8__white_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__8__white_0.geometry}
+                            material={materials.white}
+                          />
+                          <mesh
+                            name="wall__8__Material__25_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__8__Material__25_0.geometry}
+                            material={materials.Material__25}
+                          />
+                          <mesh
+                            name="wall__8__glass_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__8__glass_0.geometry}
+                            material={materials.glass}
+                          />
+                        </group>
+                        <group
+                          name="wall__9_"
+                          position={[-227.6, 508, 1357]}
+                          rotation={[0, 1.571, 0]}
+                        >
+                          <mesh
+                            name="wall__9__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__9__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall__9__white_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__9__white_0.geometry}
+                            material={materials.white}
+                          />
+                          <mesh
+                            name="wall__9__Material__25_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__9__Material__25_0.geometry}
+                            material={materials.Material__25}
+                          />
+                          <mesh
+                            name="wall__9__glass_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__9__glass_0.geometry}
+                            material={materials.glass}
+                          />
+                        </group>
+                        <group
+                          name="wall__10_"
+                          position={[-227.6, 508, 1872]}
+                          rotation={[0, 1.571, 0]}
+                        >
+                          <mesh
+                            name="wall__10__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__10__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall__10__white_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__10__white_0.geometry}
+                            material={materials.white}
+                          />
+                          <mesh
+                            name="wall__10__Material__25_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__10__Material__25_0.geometry}
+                            material={materials.Material__25}
+                          />
+                          <mesh
+                            name="wall__10__glass_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__10__glass_0.geometry}
+                            material={materials.glass}
+                          />
+                        </group>
+                        <group
+                          name="wall001__3_"
+                          position={[1795, 342, 1123]}
+                          rotation={[Math.PI, 0, Math.PI]}
+                        >
+                          <mesh
+                            name="wall001__3__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__3__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall001__3__Material__25_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__3__Material__25_0.geometry}
+                            material={materials.Material__25}
+                          />
+                        </group>
+                        <group
+                          name="wall001__4_"
+                          position={[1345.006, 342, 1125.329]}
+                          rotation={[Math.PI, 0, Math.PI]}
+                        >
+                          <mesh
+                            name="wall001__4__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__4__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall001__4__Material__25_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__4__Material__25_0.geometry}
+                            material={materials.Material__25}
+                          />
+                        </group>
+                        <group
+                          name="wall001__5_"
+                          position={[895.012, 342, 1127.658]}
+                          rotation={[Math.PI, 0, Math.PI]}
+                        >
+                          <mesh
+                            name="wall001__5__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__5__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall001__5__Material__25_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__5__Material__25_0.geometry}
+                            material={materials.Material__25}
+                          />
+                        </group>
+                        <group
+                          name="wall001__6_"
+                          position={[439.988, 342, 2244.67]}
+                          rotation={[Math.PI, 0, Math.PI]}
+                        >
+                          <mesh
+                            name="wall001__6__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__6__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall001__6__Material__25_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__6__Material__25_0.geometry}
+                            material={materials.Material__25}
+                          />
+                        </group>
+                        <group
+                          name="wall001__7_"
+                          position={[-15, 342, 2247]}
+                          rotation={[Math.PI, 0, Math.PI]}
+                        >
+                          <mesh
+                            name="wall001__7__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__7__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall001__7__Material__25_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__7__Material__25_0.geometry}
+                            material={materials.Material__25}
+                          />
+                        </group>
+                        <group
+                          name="wall__11_"
+                          position={[670, 508, 2371]}
+                          rotation={[0, -1.571, 0]}
+                        >
+                          <mesh
+                            name="wall__11__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__11__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall__11__white_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__11__white_0.geometry}
+                            material={materials.white}
+                          />
+                          <mesh
+                            name="wall__11__Material__25_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__11__Material__25_0.geometry}
+                            material={materials.Material__25}
+                          />
+                          <mesh
+                            name="wall__11__glass_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__11__glass_0.geometry}
+                            material={materials.glass}
+                          />
+                        </group>
+                        <group
+                          name="wall__12_"
+                          position={[670, 508, 1871]}
+                          rotation={[0, -1.571, 0]}
+                        >
+                          <mesh
+                            name="wall__12__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__12__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall__12__white_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__12__white_0.geometry}
+                            material={materials.white}
+                          />
+                          <mesh
+                            name="wall__12__Material__25_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__12__Material__25_0.geometry}
+                            material={materials.Material__25}
+                          />
+                          <mesh
+                            name="wall__12__glass_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__12__glass_0.geometry}
+                            material={materials.glass}
+                          />
+                        </group>
+                        <group
+                          name="wall001__8_"
+                          position={[2029, 1017, 13]}
+                          rotation={[0, -Math.PI / 2, 0]}
+                        >
+                          <mesh
+                            name="wall001__8__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__8__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall001__8__shade_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__8__shade_0.geometry}
+                            material={materials.shade}
+                          />
+                        </group>
+                        <group
+                          name="wall001__9_"
+                          position={[2029, 1017, 463]}
+                          rotation={[0, -Math.PI / 2, 0]}
+                        >
+                          <mesh
+                            name="wall001__9__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__9__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall001__9__shade_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__9__shade_0.geometry}
+                            material={materials.shade}
+                          />
+                        </group>
+                        <group
+                          name="wall001__10_"
+                          position={[2029, 1017, 913]}
+                          rotation={[0, -Math.PI / 2, 0]}
+                        >
+                          <mesh
+                            name="wall001__10__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__10__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall001__10__shade_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__10__shade_0.geometry}
+                            material={materials.shade}
+                          />
+                        </group>
+                        <group
+                          name="wall001__11_"
+                          position={[1795, 1017, 1123]}
+                          rotation={[Math.PI, 0, Math.PI]}
+                        >
+                          <mesh
+                            name="wall001__11__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__11__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall001__11__shade_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__11__shade_0.geometry}
+                            material={materials.shade}
+                          />
+                        </group>
+                        <group
+                          name="wall001__12_"
+                          position={[1345.006, 1017, 1125.33]}
+                          rotation={[Math.PI, 0, Math.PI]}
+                        >
+                          <mesh
+                            name="wall001__12__Material__26_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__12__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall001__12__shade_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__12__shade_0.geometry}
+                            material={materials.shade}
+                          />
+                        </group>
+                        <group
+                          name="roof"
+                          position={[895.012, 1017, 1127.659]}
+                          rotation={[Math.PI, 0, Math.PI]}
+                        >
+                          <mesh
+                            name="roof_Material__26_0"
+                            // //castShadow
+                            receiveShadow
+                            geometry={nodes.roof_Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="roof_shade_0"
+                            ////castShadow
+                            receiveShadow
+                            geometry={nodes.roof_shade_0.geometry}
+                            material={materials.shade}
+                          />
+                        </group>
+                        <group
+                          name="wall001__14_"
+                          position={[439.988, 1017, 2239]}
+                          rotation={[Math.PI, 0, Math.PI]}
+                        >
+                          <mesh
+                            name="wall001__14__Material__26_0"
+                            ////castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__14__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall001__14__shade_0"
+                            ////castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__14__shade_0.geometry}
+                            material={materials.shade}
+                          />
+                        </group>
+                        <group
+                          name="wall001__15_"
+                          position={[-10.006, 1017, 2241.329]}
+                          rotation={[Math.PI, 0, Math.PI]}
+                        >
+                          <mesh
+                            name="wall001__15__Material__26_0"
+                            ////castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__15__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall001__15__shade_0"
+                            ////castShadow
+                            receiveShadow
+                            geometry={nodes.wall001__15__shade_0.geometry}
+                            material={materials.shade}
+                          />
+                        </group>
+                        <group
+                          name="wall__14_"
+                          position={[-227.6, 508, 2374.502]}
+                          rotation={[0, 1.571, 0]}
+                        >
+                          <mesh
+                            name="wall__14__Material__26_0"
+                            ////castShadow
+                            receiveShadow
+                            geometry={nodes.wall__14__Material__26_0.geometry}
+                            material={materials.Material__26}
+                          />
+                          <mesh
+                            name="wall__14__white_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__14__white_0.geometry}
+                            material={materials.white}
+                          />
+                          <mesh
+                            name="wall__14__Material__25_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__14__Material__25_0.geometry}
+                            material={materials.Material__25}
+                          />
+                          <mesh
+                            name="wall__14__glass_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.wall__14__glass_0.geometry}
+                            material={materials.glass}
+                          />
+                        </group>
+                      </group>
+
+
+
+                      <group name="Floor">
+                        <group name="floor" rotation={[-Math.PI / 2, 0, 0]}>
+                          <mesh
+                            name="floor_Material__108_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.floor_Material__108_0.geometry}
+                            material={materials.Material__108}
+                          />
+                        </group>
+                        <group
+                          name="floor__1_"
+                          position={[450, 0, 0]}
+                          rotation={[-Math.PI / 2, 0, 0]}
+                        >
+                          <mesh
+                            name="floor__1__Material__108_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.floor__1__Material__108_0.geometry}
+                            material={materials.Material__108}
+                          />
+                        </group>
+                        <group
+                          name="floor__2_"
+                          position={[900, 0, 0]}
+                          rotation={[-Math.PI / 2, 0, 0]}
+                        >
+                          <mesh
+                            name="floor__2__Material__108_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.floor__2__Material__108_0.geometry}
+                            material={materials.Material__108}
+                          />
+                        </group>
+                        <group
+                          name="floor__3_"
+                          position={[1350, 0, 0]}
+                          rotation={[-Math.PI / 2, 0, 0]}
+                        >
+                          <mesh
+                            name="floor__3__Material__108_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.floor__3__Material__108_0.geometry}
+                            material={materials.Material__108}
+                          />
+                        </group>
+                        <group
+                          name="floor__4_"
+                          position={[1800, 0, 0]}
+                          rotation={[-Math.PI / 2, 0, 0]}
+                        >
+                          <mesh
+                            name="floor__4__Material__108_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.floor__4__Material__108_0.geometry}
+                            material={materials.Material__108}
+                          />
+                        </group>
+                        <group
+                          name="floor__5_"
+                          position={[0, 0, 450]}
+                          rotation={[-Math.PI / 2, 0, 0]}
+                        >
+                          <mesh
+                            name="floor__5__Material__108_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.floor__5__Material__108_0.geometry}
+                            material={materials.Material__108}
+                          />
+                        </group>
+                        <group
+                          name="floor__6_"
+                          position={[450, 0, 450]}
+                          rotation={[-Math.PI / 2, 0, 0]}
+                        >
+                          <mesh
+                            name="floor__6__Material__108_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.floor__6__Material__108_0.geometry}
+                            material={materials.Material__108}
+                          />
+                        </group>
+                        <group
+                          name="floor__7_"
+                          position={[900, 0, 450]}
+                          rotation={[-Math.PI / 2, 0, 0]}
+                        >
+                          <mesh
+                            name="floor__7__Material__108_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.floor__7__Material__108_0.geometry}
+                            material={materials.Material__108}
+                          />
+                        </group>
+                        <group
+                          name="floor__8_"
+                          position={[1350, 0, 450]}
+                          rotation={[-Math.PI / 2, 0, 0]}
+                        >
+                          <mesh
+                            name="floor__8__Material__108_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.floor__8__Material__108_0.geometry}
+                            material={materials.Material__108}
+                          />
+                        </group>
+                        <group
+                          name="floor__9_"
+                          position={[1800, 0, 450]}
+                          rotation={[-Math.PI / 2, 0, 0]}
+                        >
+                          <mesh
+                            name="floor__9__Material__108_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.floor__9__Material__108_0.geometry}
+                            material={materials.Material__108}
+                          />
+                        </group>
+                        <group
+                          name="floor__10_"
+                          position={[0, 0, 900]}
+                          rotation={[-Math.PI / 2, 0, 0]}
+                        >
+                          <mesh
+                            name="floor__10__Material__108_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.floor__10__Material__108_0.geometry}
+                            material={materials.Material__108}
+                          />
+                        </group>
+                        <group
+                          name="floor__11_"
+                          position={[450, 0, 900]}
+                          rotation={[-Math.PI / 2, 0, 0]}
+                        >
+                          <mesh
+                            name="floor__11__Material__108_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.floor__11__Material__108_0.geometry}
+                            material={materials.Material__108}
+                          />
+                        </group>
+                        <group
+                          name="floor__12_"
+                          position={[900, 0, 900]}
+                          rotation={[-Math.PI / 2, 0, 0]}
+                        >
+                          <mesh
+                            name="floor__12__Material__108_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.floor__12__Material__108_0.geometry}
+                            material={materials.Material__108}
+                          />
+                        </group>
+                        <group
+                          name="floor__13_"
+                          position={[1350, 0, 900]}
+                          rotation={[-Math.PI / 2, 0, 0]}
+                        >
+                          <mesh
+                            name="floor__13__Material__108_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.floor__13__Material__108_0.geometry}
+                            material={materials.Material__108}
+                          />
+                        </group>
+                        <group
+                          name="floor__14_"
+                          position={[1800, 0, 900]}
+                          rotation={[-Math.PI / 2, 0, 0]}
+                        >
+                          <mesh
+                            name="floor__14__Material__108_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.floor__14__Material__108_0.geometry}
+                            material={materials.Material__108}
+                          />
+                        </group>
+                        <group
+                          name="floor__15_"
+                          position={[0, 0, 1350]}
+                          rotation={[-Math.PI / 2, 0, 0]}
+                        >
+                          <mesh
+                            name="floor__15__Material__108_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.floor__15__Material__108_0.geometry}
+                            material={materials.Material__108}
+                          />
+                        </group>
+                        <group
+                          name="floor__16_"
+                          position={[450, 0, 1350]}
+                          rotation={[-Math.PI / 2, 0, 0]}
+                        >
+                          <mesh
+                            name="floor__16__Material__108_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.floor__16__Material__108_0.geometry}
+                            material={materials.Material__108}
+                          />
+                        </group>
+                        <group
+                          name="floor__21_"
+                          position={[0, 0, 1800]}
+                          rotation={[-Math.PI / 2, 0, 0]}
+                        >
+                          <mesh
+                            name="floor__21__Material__108_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.floor__21__Material__108_0.geometry}
+                            material={materials.Material__108}
+                          />
+                        </group>
+                        <group
+                          name="floor__22_"
+                          position={[450, 0, 1800]}
+                          rotation={[-Math.PI / 2, 0, 0]}
+                        >
+                          <mesh
+                            name="floor__22__Material__108_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.floor__22__Material__108_0.geometry}
+                            material={materials.Material__108}
+                          />
+                        </group>
+                        <group
+                          name="floor__23_"
+                          position={[0, 0, 2255.7]}
+                          rotation={[-Math.PI / 2, 0, 0]}
+                        >
+                          <mesh
+                            name="floor__23__Material__108_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.floor__23__Material__108_0.geometry}
+                            material={materials.Material__108}
+                          />
+                        </group>
+                        <group
+                          name="floor__24_"
+                          position={[450, 0, 2255.7]}
+                          rotation={[-Math.PI / 2, 0, 0]}
+                        >
+                          <mesh
+                            name="floor__24__Material__108_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.floor__24__Material__108_0.geometry}
+                            material={materials.Material__108}
+                          />
+                        </group>
+                      </group>
+
 
                       <group name="Jali">
                         <group
@@ -1690,429 +1700,429 @@ export default function Physics(props) {
                           />
                         </group>
                       </group>
-                      
+
                       <group name="Roof">
-<group
-  name="roof_shade"
-  position={[883, 824.26, 982]}
-  rotation={[Math.PI / 2, 0, 0]}
-  scale={5.469}
->
-  <mesh
-    name="roof_shade_Roof_0"
-    ////castShadow
-    receiveShadow
-    geometry={nodes.roof_shade_Roof_0.geometry}
-    material={materials.Roof}
-  />
-</group>
-<group
-  name="SidePillars5"
-  position={[-217.1, 669.4, 346]}
-  rotation={[Math.PI, 0, Math.PI]}
-  scale={2.837}
->
-  <mesh
-    name="SidePillars5_DuctsPillars_0"
-    ////castShadow
-    receiveShadow
-    geometry={nodes.SidePillars5_DuctsPillars_0.geometry}
-    material={materials.DuctsPillars}
-  />
-</group>
-<group
-  name="CageTop__1_"
-  position={[168, 743, 482]}
-  scale={[2.772, 2.772, 3.43]}
->
-  <mesh
-    name="CageTop__1__DuctsPillars_0"
-    //castShadow
-    receiveShadow
-    geometry={nodes.CageTop__1__DuctsPillars_0.geometry}
-    material={materials.DuctsPillars}
-  />
-</group>
-<group
-  name="CageTop__2_"
-  position={[902, 743, 482]}
-  scale={[2.772, 2.772, 3.43]}
->
-  <mesh
-    name="CageTop__2__DuctsPillars_0"
-    //castShadow
-    receiveShadow
-    geometry={nodes.CageTop__2__DuctsPillars_0.geometry}
-    material={materials.DuctsPillars}
-  />
-</group>
-<group
-  name="CageTop__3_"
-  position={[1647, 743, 482]}
-  scale={[2.772, 2.772, 3.43]}
->
-  <mesh
-    name="CageTop__3__DuctsPillars_0"
-    //castShadow
-    receiveShadow
-    geometry={nodes.CageTop__3__DuctsPillars_0.geometry}
-    material={materials.DuctsPillars}
-  />
-</group>
-<group
-  name="CageTop__4_"
-  position={[168, 743, 1695]}
-  scale={[2.772, 2.772, 3.43]}
->
-  <mesh
-    name="CageTop__4__DuctsPillars_0"
-    //castShadow
-    receiveShadow
-    geometry={nodes.CageTop__4__DuctsPillars_0.geometry}
-    material={materials.DuctsPillars}
-  />
-</group>
-<group
-  name="SidePillars5__1_"
-  position={[-217.1, 669.4, 1478]}
-  rotation={[Math.PI, 0, Math.PI]}
-  scale={2.837}
->
-  <mesh
-    name="SidePillars5__1__DuctsPillars_0"
-    //castShadow
-    receiveShadow
-    geometry={
-      nodes.SidePillars5__1__DuctsPillars_0.geometry
-    }
-    material={materials.DuctsPillars}
-  />
-</group>
-<group
-  name="SidePillars5__2_"
-  position={[-217.1, 788, 346]}
-  rotation={[Math.PI, 0, Math.PI]}
-  scale={2.837}
->
-  <mesh
-    name="SidePillars5__2__DuctsPillars_0"
-    //castShadow
-    receiveShadow
-    geometry={
-      nodes.SidePillars5__2__DuctsPillars_0.geometry
-    }
-    material={materials.DuctsPillars}
-  />
-</group>
-<group
-  name="SidePillars5__3_"
-  position={[-217.1, 789, 1609]}
-  rotation={[Math.PI, 0, Math.PI]}
-  scale={[2.837, 2.837, 3.475]}
->
-  <mesh
-    name="SidePillars5__3__DuctsPillars_0"
-    //castShadow
-    receiveShadow
-    geometry={
-      nodes.SidePillars5__3__DuctsPillars_0.geometry
-    }
-    material={materials.DuctsPillars}
-  />
-</group>
-<group
-  name="SidePillars5__4_"
-  position={[2029.2, 669.4, 344]}
-  scale={2.837}
->
-  <mesh
-    name="SidePillars5__4__DuctsPillars_0"
-    //castShadow
-    receiveShadow
-    geometry={
-      nodes.SidePillars5__4__DuctsPillars_0.geometry
-    }
-    material={materials.DuctsPillars}
-  />
-</group>
-<group
-  name="SidePillars5__5_"
-  position={[2029.2, 669.4, 1456.684]}
-  scale={2.837}
->
-  <mesh
-    name="SidePillars5__5__DuctsPillars_0"
-    //castShadow
-    receiveShadow
-    geometry={
-      nodes.SidePillars5__5__DuctsPillars_0.geometry
-    }
-    material={materials.DuctsPillars}
-  />
-</group>
-<group
-  name="Ceiling_Lights2"
-  position={[261.738, 701.35, 1310.814]}
-  rotation={[0, 0, Math.PI]}
-  scale={[545.81, 7.433, 48.805]}
->
-  <mesh
-    name="Ceiling_Lights2_White_2_0"
-    //castShadow
-    receiveShadow
-    geometry={nodes.Ceiling_Lights2_White_2_0.geometry}
-    material={materials.White_2}
-  />
-  <mesh
-    name="Ceiling_Lights2_White_1_0"
-    //castShadow
-    receiveShadow
-    geometry={nodes.Ceiling_Lights2_White_1_0.geometry}
-    material={materials.White_1}
-  />
-  <group
-    name="pCylinder7"
-    position={[-0.313, -10.183, -0.025]}
-    rotation={[0, 0, Math.PI]}
-    scale={[0.036, 2.579, 0.557]}
-  >
-    <mesh
-      name="pCylinder7_Black_0"
-      //castShadow
-      receiveShadow
-      geometry={nodes.pCylinder7_Black_0.geometry}
-      material={materials.Black}
-    />
-  </group>
-  <group
-    name="pCylinder8"
-    position={[0.308, -10.183, -0.025]}
-    rotation={[0, 0, Math.PI]}
-    scale={[0.036, 2.579, 0.557]}
-  >
-    <mesh
-      name="pCylinder8_Black_0"
-      //castShadow
-      receiveShadow
-      geometry={nodes.pCylinder8_Black_0.geometry}
-      material={materials.Black}
-    />
-  </group>
-</group>
-<group
-  name="Ceiling_Lights2__1_"
-  position={[261.738, 701.35, 608.746]}
-  rotation={[0, 0, Math.PI]}
-  scale={[545.81, 7.433, 48.805]}
->
-  <mesh
-    name="Ceiling_Lights2__1__White_2_0"
-    //castShadow
-    receiveShadow
-    geometry={
-      nodes.Ceiling_Lights2__1__White_2_0.geometry
-    }
-    material={materials.White_2}
-  />
-  <mesh
-    name="Ceiling_Lights2__1__White_1_0"
-    //castShadow
-    receiveShadow
-    geometry={
-      nodes.Ceiling_Lights2__1__White_1_0.geometry
-    }
-    material={materials.White_1}
-  />
-  <group
-    name="pCylinder7_1"
-    position={[-0.313, -10.183, -0.025]}
-    rotation={[0, 0, Math.PI]}
-    scale={[0.036, 2.579, 0.557]}
-  >
-    <mesh
-      name="pCylinder7_1_Black_0"
-      //castShadow
-      receiveShadow
-      geometry={nodes.pCylinder7_1_Black_0.geometry}
-      material={materials.Black}
-    />
-  </group>
-  <group
-    name="pCylinder8_1"
-    position={[0.308, -10.183, -0.025]}
-    rotation={[0, 0, Math.PI]}
-    scale={[0.036, 2.579, 0.557]}
-  >
-    <mesh
-      name="pCylinder8_1_Black_0"
-      //castShadow
-      receiveShadow
-      geometry={nodes.pCylinder8_1_Black_0.geometry}
-      material={materials.Black}
-    />
-  </group>
-</group>
-<group
-  name="Ceiling_Lights2__2_"
-  position={[261.738, 701.35, 57.429]}
-  rotation={[0, 0, Math.PI]}
-  scale={[545.81, 7.433, 48.805]}
->
-  <mesh
-    name="Ceiling_Lights2__2__White_2_0"
-    //castShadow
-    receiveShadow
-    geometry={
-      nodes.Ceiling_Lights2__2__White_2_0.geometry
-    }
-    material={materials.White_2}
-  />
-  <mesh
-    name="Ceiling_Lights2__2__White_1_0"
-    //castShadow
-    receiveShadow
-    geometry={
-      nodes.Ceiling_Lights2__2__White_1_0.geometry
-    }
-    material={materials.White_1}
-  />
-  <group
-    name="pCylinder7_2"
-    position={[-0.313, -10.183, -0.025]}
-    rotation={[0, 0, Math.PI]}
-    scale={[0.036, 2.579, 0.557]}
-  >
-    <mesh
-      name="pCylinder7_2_Black_0"
-      //castShadow
-      receiveShadow
-      geometry={nodes.pCylinder7_2_Black_0.geometry}
-      material={materials.Black}
-    />
-  </group>
-  <group
-    name="pCylinder8_2"
-    position={[0.308, -10.183, -0.025]}
-    rotation={[0, 0, Math.PI]}
-    scale={[0.036, 2.579, 0.557]}
-  >
-    <mesh
-      name="pCylinder8_2_Black_0"
-      //castShadow
-      receiveShadow
-      geometry={nodes.pCylinder8_2_Black_0.geometry}
-      material={materials.Black}
-    />
-  </group>
-</group>
-<group
-  name="Ceiling_Lights2__3_"
-  position={[1480.229, 701.35, 608.746]}
-  rotation={[0, 0, Math.PI]}
-  scale={[545.81, 7.433, 48.805]}
->
-  <mesh
-    name="Ceiling_Lights2__3__White_2_0"
-    //castShadow
-    receiveShadow
-    geometry={
-      nodes.Ceiling_Lights2__3__White_2_0.geometry
-    }
-    material={materials.White_2}
-  />
-  <mesh
-    name="Ceiling_Lights2__3__White_1_0"
-    //castShadow
-    receiveShadow
-    geometry={
-      nodes.Ceiling_Lights2__3__White_1_0.geometry
-    }
-    material={materials.White_1}
-  />
-  <group
-    name="pCylinder7_3"
-    position={[-0.313, -10.183, -0.025]}
-    rotation={[0, 0, Math.PI]}
-    scale={[0.036, 2.579, 0.557]}
-  >
-    <mesh
-      name="pCylinder7_3_Black_0"
-      //castShadow
-      receiveShadow
-      geometry={nodes.pCylinder7_3_Black_0.geometry}
-      material={materials.Black}
-    />
-  </group>
-  <group
-    name="pCylinder8_3"
-    position={[0.308, -10.183, -0.025]}
-    rotation={[0, 0, Math.PI]}
-    scale={[0.036, 2.579, 0.557]}
-  >
-    <mesh
-      name="pCylinder8_3_Black_0"
-      //castShadow
-      receiveShadow
-      geometry={nodes.pCylinder8_3_Black_0.geometry}
-      material={materials.Black}
-    />
-  </group>
-</group>
-<group
-  name="Ceiling_Lights2__4_"
-  position={[1480.229, 701.35, 57.429]}
-  rotation={[0, 0, Math.PI]}
-  scale={[545.81, 7.433, 48.805]}
->
-  <mesh
-    name="Ceiling_Lights2__4__White_2_0"
-    //castShadow
-    receiveShadow
-    geometry={
-      nodes.Ceiling_Lights2__4__White_2_0.geometry
-    }
-    material={materials.White_2}
-  />
-  <mesh
-    name="Ceiling_Lights2__4__White_1_0"
-    //castShadow
-    receiveShadow
-    geometry={
-      nodes.Ceiling_Lights2__4__White_1_0.geometry
-    }
-    material={materials.White_1}
-  />
-  <group
-    name="pCylinder7_4"
-    position={[-0.313, -10.183, -0.025]}
-    rotation={[0, 0, Math.PI]}
-    scale={[0.036, 2.579, 0.557]}
-  >
-    <mesh
-      name="pCylinder7_4_Black_0"
-      //castShadow
-      receiveShadow
-      geometry={nodes.pCylinder7_4_Black_0.geometry}
-      material={materials.Black}
-    />
-  </group>
-  <group
-    name="pCylinder8_4"
-    position={[0.308, -10.183, -0.025]}
-    rotation={[0, 0, Math.PI]}
-    scale={[0.036, 2.579, 0.557]}
-  >
-    <mesh
-      name="pCylinder8_4_Black_0"
-      //castShadow
-      receiveShadow
-      geometry={nodes.pCylinder8_4_Black_0.geometry}
-      material={materials.Black}
-    />
-  </group>
-</group>
-</group>
-                      
+                        <group
+                          name="roof_shade"
+                          position={[883, 824.26, 982]}
+                          rotation={[Math.PI / 2, 0, 0]}
+                          scale={5.469}
+                        >
+                          <mesh
+                            name="roof_shade_Roof_0"
+                            ////castShadow
+                            receiveShadow
+                            geometry={nodes.roof_shade_Roof_0.geometry}
+                            material={materials.Roof}
+                          />
+                        </group>
+                        <group
+                          name="SidePillars5"
+                          position={[-217.1, 669.4, 346]}
+                          rotation={[Math.PI, 0, Math.PI]}
+                          scale={2.837}
+                        >
+                          <mesh
+                            name="SidePillars5_DuctsPillars_0"
+                            ////castShadow
+                            receiveShadow
+                            geometry={nodes.SidePillars5_DuctsPillars_0.geometry}
+                            material={materials.DuctsPillars}
+                          />
+                        </group>
+                        <group
+                          name="CageTop__1_"
+                          position={[168, 743, 482]}
+                          scale={[2.772, 2.772, 3.43]}
+                        >
+                          <mesh
+                            name="CageTop__1__DuctsPillars_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.CageTop__1__DuctsPillars_0.geometry}
+                            material={materials.DuctsPillars}
+                          />
+                        </group>
+                        <group
+                          name="CageTop__2_"
+                          position={[902, 743, 482]}
+                          scale={[2.772, 2.772, 3.43]}
+                        >
+                          <mesh
+                            name="CageTop__2__DuctsPillars_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.CageTop__2__DuctsPillars_0.geometry}
+                            material={materials.DuctsPillars}
+                          />
+                        </group>
+                        <group
+                          name="CageTop__3_"
+                          position={[1647, 743, 482]}
+                          scale={[2.772, 2.772, 3.43]}
+                        >
+                          <mesh
+                            name="CageTop__3__DuctsPillars_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.CageTop__3__DuctsPillars_0.geometry}
+                            material={materials.DuctsPillars}
+                          />
+                        </group>
+                        <group
+                          name="CageTop__4_"
+                          position={[168, 743, 1695]}
+                          scale={[2.772, 2.772, 3.43]}
+                        >
+                          <mesh
+                            name="CageTop__4__DuctsPillars_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.CageTop__4__DuctsPillars_0.geometry}
+                            material={materials.DuctsPillars}
+                          />
+                        </group>
+                        <group
+                          name="SidePillars5__1_"
+                          position={[-217.1, 669.4, 1478]}
+                          rotation={[Math.PI, 0, Math.PI]}
+                          scale={2.837}
+                        >
+                          <mesh
+                            name="SidePillars5__1__DuctsPillars_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={
+                              nodes.SidePillars5__1__DuctsPillars_0.geometry
+                            }
+                            material={materials.DuctsPillars}
+                          />
+                        </group>
+                        <group
+                          name="SidePillars5__2_"
+                          position={[-217.1, 788, 346]}
+                          rotation={[Math.PI, 0, Math.PI]}
+                          scale={2.837}
+                        >
+                          <mesh
+                            name="SidePillars5__2__DuctsPillars_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={
+                              nodes.SidePillars5__2__DuctsPillars_0.geometry
+                            }
+                            material={materials.DuctsPillars}
+                          />
+                        </group>
+                        <group
+                          name="SidePillars5__3_"
+                          position={[-217.1, 789, 1609]}
+                          rotation={[Math.PI, 0, Math.PI]}
+                          scale={[2.837, 2.837, 3.475]}
+                        >
+                          <mesh
+                            name="SidePillars5__3__DuctsPillars_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={
+                              nodes.SidePillars5__3__DuctsPillars_0.geometry
+                            }
+                            material={materials.DuctsPillars}
+                          />
+                        </group>
+                        <group
+                          name="SidePillars5__4_"
+                          position={[2029.2, 669.4, 344]}
+                          scale={2.837}
+                        >
+                          <mesh
+                            name="SidePillars5__4__DuctsPillars_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={
+                              nodes.SidePillars5__4__DuctsPillars_0.geometry
+                            }
+                            material={materials.DuctsPillars}
+                          />
+                        </group>
+                        <group
+                          name="SidePillars5__5_"
+                          position={[2029.2, 669.4, 1456.684]}
+                          scale={2.837}
+                        >
+                          <mesh
+                            name="SidePillars5__5__DuctsPillars_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={
+                              nodes.SidePillars5__5__DuctsPillars_0.geometry
+                            }
+                            material={materials.DuctsPillars}
+                          />
+                        </group>
+                        <group
+                          name="Ceiling_Lights2"
+                          position={[261.738, 701.35, 1310.814]}
+                          rotation={[0, 0, Math.PI]}
+                          scale={[545.81, 7.433, 48.805]}
+                        >
+                          <mesh
+                            name="Ceiling_Lights2_White_2_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.Ceiling_Lights2_White_2_0.geometry}
+                            material={materials.White_2}
+                          />
+                          <mesh
+                            name="Ceiling_Lights2_White_1_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={nodes.Ceiling_Lights2_White_1_0.geometry}
+                            material={materials.White_1}
+                          />
+                          <group
+                            name="pCylinder7"
+                            position={[-0.313, -10.183, -0.025]}
+                            rotation={[0, 0, Math.PI]}
+                            scale={[0.036, 2.579, 0.557]}
+                          >
+                            <mesh
+                              name="pCylinder7_Black_0"
+                              //castShadow
+                              receiveShadow
+                              geometry={nodes.pCylinder7_Black_0.geometry}
+                              material={materials.Black}
+                            />
+                          </group>
+                          <group
+                            name="pCylinder8"
+                            position={[0.308, -10.183, -0.025]}
+                            rotation={[0, 0, Math.PI]}
+                            scale={[0.036, 2.579, 0.557]}
+                          >
+                            <mesh
+                              name="pCylinder8_Black_0"
+                              //castShadow
+                              receiveShadow
+                              geometry={nodes.pCylinder8_Black_0.geometry}
+                              material={materials.Black}
+                            />
+                          </group>
+                        </group>
+                        <group
+                          name="Ceiling_Lights2__1_"
+                          position={[261.738, 701.35, 608.746]}
+                          rotation={[0, 0, Math.PI]}
+                          scale={[545.81, 7.433, 48.805]}
+                        >
+                          <mesh
+                            name="Ceiling_Lights2__1__White_2_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={
+                              nodes.Ceiling_Lights2__1__White_2_0.geometry
+                            }
+                            material={materials.White_2}
+                          />
+                          <mesh
+                            name="Ceiling_Lights2__1__White_1_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={
+                              nodes.Ceiling_Lights2__1__White_1_0.geometry
+                            }
+                            material={materials.White_1}
+                          />
+                          <group
+                            name="pCylinder7_1"
+                            position={[-0.313, -10.183, -0.025]}
+                            rotation={[0, 0, Math.PI]}
+                            scale={[0.036, 2.579, 0.557]}
+                          >
+                            <mesh
+                              name="pCylinder7_1_Black_0"
+                              //castShadow
+                              receiveShadow
+                              geometry={nodes.pCylinder7_1_Black_0.geometry}
+                              material={materials.Black}
+                            />
+                          </group>
+                          <group
+                            name="pCylinder8_1"
+                            position={[0.308, -10.183, -0.025]}
+                            rotation={[0, 0, Math.PI]}
+                            scale={[0.036, 2.579, 0.557]}
+                          >
+                            <mesh
+                              name="pCylinder8_1_Black_0"
+                              //castShadow
+                              receiveShadow
+                              geometry={nodes.pCylinder8_1_Black_0.geometry}
+                              material={materials.Black}
+                            />
+                          </group>
+                        </group>
+                        <group
+                          name="Ceiling_Lights2__2_"
+                          position={[261.738, 701.35, 57.429]}
+                          rotation={[0, 0, Math.PI]}
+                          scale={[545.81, 7.433, 48.805]}
+                        >
+                          <mesh
+                            name="Ceiling_Lights2__2__White_2_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={
+                              nodes.Ceiling_Lights2__2__White_2_0.geometry
+                            }
+                            material={materials.White_2}
+                          />
+                          <mesh
+                            name="Ceiling_Lights2__2__White_1_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={
+                              nodes.Ceiling_Lights2__2__White_1_0.geometry
+                            }
+                            material={materials.White_1}
+                          />
+                          <group
+                            name="pCylinder7_2"
+                            position={[-0.313, -10.183, -0.025]}
+                            rotation={[0, 0, Math.PI]}
+                            scale={[0.036, 2.579, 0.557]}
+                          >
+                            <mesh
+                              name="pCylinder7_2_Black_0"
+                              //castShadow
+                              receiveShadow
+                              geometry={nodes.pCylinder7_2_Black_0.geometry}
+                              material={materials.Black}
+                            />
+                          </group>
+                          <group
+                            name="pCylinder8_2"
+                            position={[0.308, -10.183, -0.025]}
+                            rotation={[0, 0, Math.PI]}
+                            scale={[0.036, 2.579, 0.557]}
+                          >
+                            <mesh
+                              name="pCylinder8_2_Black_0"
+                              //castShadow
+                              receiveShadow
+                              geometry={nodes.pCylinder8_2_Black_0.geometry}
+                              material={materials.Black}
+                            />
+                          </group>
+                        </group>
+                        <group
+                          name="Ceiling_Lights2__3_"
+                          position={[1480.229, 701.35, 608.746]}
+                          rotation={[0, 0, Math.PI]}
+                          scale={[545.81, 7.433, 48.805]}
+                        >
+                          <mesh
+                            name="Ceiling_Lights2__3__White_2_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={
+                              nodes.Ceiling_Lights2__3__White_2_0.geometry
+                            }
+                            material={materials.White_2}
+                          />
+                          <mesh
+                            name="Ceiling_Lights2__3__White_1_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={
+                              nodes.Ceiling_Lights2__3__White_1_0.geometry
+                            }
+                            material={materials.White_1}
+                          />
+                          <group
+                            name="pCylinder7_3"
+                            position={[-0.313, -10.183, -0.025]}
+                            rotation={[0, 0, Math.PI]}
+                            scale={[0.036, 2.579, 0.557]}
+                          >
+                            <mesh
+                              name="pCylinder7_3_Black_0"
+                              //castShadow
+                              receiveShadow
+                              geometry={nodes.pCylinder7_3_Black_0.geometry}
+                              material={materials.Black}
+                            />
+                          </group>
+                          <group
+                            name="pCylinder8_3"
+                            position={[0.308, -10.183, -0.025]}
+                            rotation={[0, 0, Math.PI]}
+                            scale={[0.036, 2.579, 0.557]}
+                          >
+                            <mesh
+                              name="pCylinder8_3_Black_0"
+                              //castShadow
+                              receiveShadow
+                              geometry={nodes.pCylinder8_3_Black_0.geometry}
+                              material={materials.Black}
+                            />
+                          </group>
+                        </group>
+                        <group
+                          name="Ceiling_Lights2__4_"
+                          position={[1480.229, 701.35, 57.429]}
+                          rotation={[0, 0, Math.PI]}
+                          scale={[545.81, 7.433, 48.805]}
+                        >
+                          <mesh
+                            name="Ceiling_Lights2__4__White_2_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={
+                              nodes.Ceiling_Lights2__4__White_2_0.geometry
+                            }
+                            material={materials.White_2}
+                          />
+                          <mesh
+                            name="Ceiling_Lights2__4__White_1_0"
+                            //castShadow
+                            receiveShadow
+                            geometry={
+                              nodes.Ceiling_Lights2__4__White_1_0.geometry
+                            }
+                            material={materials.White_1}
+                          />
+                          <group
+                            name="pCylinder7_4"
+                            position={[-0.313, -10.183, -0.025]}
+                            rotation={[0, 0, Math.PI]}
+                            scale={[0.036, 2.579, 0.557]}
+                          >
+                            <mesh
+                              name="pCylinder7_4_Black_0"
+                              //castShadow
+                              receiveShadow
+                              geometry={nodes.pCylinder7_4_Black_0.geometry}
+                              material={materials.Black}
+                            />
+                          </group>
+                          <group
+                            name="pCylinder8_4"
+                            position={[0.308, -10.183, -0.025]}
+                            rotation={[0, 0, Math.PI]}
+                            scale={[0.036, 2.579, 0.557]}
+                          >
+                            <mesh
+                              name="pCylinder8_4_Black_0"
+                              //castShadow
+                              receiveShadow
+                              geometry={nodes.pCylinder8_4_Black_0.geometry}
+                              material={materials.Black}
+                            />
+                          </group>
+                        </group>
+                      </group>
+
                       <group
                         name="Rack"
                         position={[-2002, -311, -1538]}

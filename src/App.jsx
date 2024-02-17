@@ -7,11 +7,11 @@ import Avatar from './Avatar'
 import TWEEN from '@tweenjs/tween.js'
 import annotations from './GarageAnnotations.json'
 
-function Tween() {
-  useFrame(() => {
-    TWEEN.update()
-  })
-}
+// function Tween() {
+//   useFrame(() => {
+//     TWEEN.update()
+//   })
+// }
 
 function Annotations({ controls }) {
   const { camera } = useThree()
@@ -65,7 +65,7 @@ export default function App() {
           <directionalLight
             intensity={1}
             castShadow={true}
-            shadow-bias={-0.0002}
+            // shadow-bias={-0.0002}
             shadow-mapSize={[2048, 2048]}
             position={[0.382, 4, -2.8]}
             shadow-camera-left={-30}
