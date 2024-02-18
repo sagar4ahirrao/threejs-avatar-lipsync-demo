@@ -54,7 +54,7 @@ function Annotations({ controls }) {
 
 function Loader() {
   const { progress } = useProgress()
-  return <Html center>{(Math.round(progress * 100) / 100).toFixed(2)}% loaded</Html>
+  return <Html center><p style={{fontSize: 2.5 + 'vw'}}>{(Math.round(progress * 100) / 100).toFixed(2)}% Loaded</p></Html>
 }
 export default function App() {
   const ref = useRef()

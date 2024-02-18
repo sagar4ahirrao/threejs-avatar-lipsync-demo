@@ -1,9 +1,9 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { Html, useAnimations, useFBX, useGLTF } from "@react-three/drei";
-import { useControls } from "leva";
+import React, { useEffect, useMemo, useRef, useState } from "react"
+import { Html, useAnimations, useFBX, useGLTF } from "@react-three/drei"
+import { useControls } from "leva"
 import useOctree from './useOctree'
-import { useFrame, useLoader } from "@react-three/fiber";
-import * as THREE from "three";
+import { useFrame, useLoader } from "@react-three/fiber"
+import * as THREE from "three"
 
 const corresponding = {
     A: "viseme_PP",

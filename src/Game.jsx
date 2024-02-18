@@ -1,10 +1,10 @@
-import { useGLTF, useAnimations } from '@react-three/drei';
-import useOctree from './useOctree';
-import Player from './Player';
-import useOctreeHelper from './useOctreeHelper';
-import { useEffect, useRef } from 'react';
-import { useFrame } from '@react-three/fiber';
-import { useControls } from "leva";
+import { useGLTF, useAnimations } from '@react-three/drei'
+import useOctree from './useOctree'
+import Player from './Player'
+import useOctreeHelper from './useOctreeHelper'
+import { useEffect, useRef } from 'react'
+import { useFrame } from '@react-three/fiber'
+import { useControls } from "leva"
 
 export default function Physics(props) {
   const group = useRef();
